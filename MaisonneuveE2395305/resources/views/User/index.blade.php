@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title', 'User List')
+@section('title', 'Student List')
 @section('content')
-    <h1 class="mt-5 mb-4 text-center">User List</h1>
+    <h1 class="mt-5 mb-4 text-center">Student List</h1>
     <div class="row">
         @forelse ($user as $users)
             <div class="col-md-3">
@@ -12,7 +12,7 @@
                     <ul class="list-group list-group-flush list-unstyled mb-3">
                         <li><strong>Email:</strong> <span class="text-muted">{{ $users->email}}</span></li>
                         <li><strong>Telephone:</strong> <span class="text-muted">{{ $users->telephone }}</span></li>
-                        <li><strong>Ville:</strong> <span class="text-muted">{{ $users->ville->nom }}</span></li>
+                        
                         <li><strong>Adresse:</strong> <span class="text-muted">{{ $users->adresse }}</span></li>
                         <li><strong>Profil Crée le:</strong> <span class="text-muted">{{ $users->created_at }}</span></li>
                         <li><strong>Profil Mise à Jour le:</strong> <span class="text-muted">{{ $users->updated_at }}</span></li>

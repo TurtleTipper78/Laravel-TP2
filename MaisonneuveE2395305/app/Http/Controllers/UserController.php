@@ -25,31 +25,43 @@ class UserController extends Controller
         return view('user.create');
     }
 
+    public function register(Request $request)
+{
+    // Handle user registration here
+
+    // Redirect to the edit view after registration
+    return redirect()->route('user.edit', ['user' => auth()->user()]);
+}
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         $request->validate([
-            'nom' => 'required|string|max:191',
-            'adresse' => 'required|string',
+            'nom' => 'nullable|string|max:191',
+            'adresse' => 'nullable|string',
             'telephone' => 'nullable|string|max:20',
-            'email' => 'nullable|email',
+            'email' => 'required|email',
             'date_de_naissance' => 'nullable|date',
             'ville_id' => 'nullable|integer',
+            'password' => 'required|min:6|max:20',
         ]);
 
         $user = new User();
-        $user->nom = $request->nom;
-        $user->adresse = $request->adresse;
-        $user->telephone = $request->input('telephone');
+        
         $user->email = $request->input('email');
-        $user->date_de_naissance = $request->input('date_de_naissance');
-        $user->ville_id = $request->input('ville_id');
+        $user->password = $request->input('password');
+        
 
         $user->save();
 
-        return redirect()->route('user.show', $user->id)->with('success', 'User created successfully!');
+        return redirect()->route('user.info', $user->id)->with('success', 'User created successfully!');
+    }
+
+    public function info(User $user)
+    {
+        return view ('user.info', ['user' => $user]);
     }
 
 
@@ -60,7 +72,6 @@ class UserController extends Controller
     {
         return view('user.show', ['user' => $user]);
     }
-
 
     /**
      * Show the form for editing the specified resource.

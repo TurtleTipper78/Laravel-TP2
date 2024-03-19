@@ -46,10 +46,25 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="{{ route('user.index') }}">Home</a></li>
-        <li><a class="dropdown-item" href="{{ route('user.create') }}">Ajouter user</a></li>
-        <li><a class="dropdown-item" href="{{ route('user.index') }}">Liste user</a></li>
-        <li><a class="dropdown-item" href="{{ route('ville.index') }}">Liste ville</a></li>
+        <li><a class="dropdown-item" href="{{ route('user.create') }}">Regsiter</a></li>
+        <li><a class="dropdown-item" href="{{ route('user.index') }}">Student List</a></li>
+        <li><a class="dropdown-item" href="{{ route('ville.index') }}">City's List</a></li>
+        @auth
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                  aria-expanded="false">('Users')</a>
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{{route('user.create')}}">('New User')</a></li>
+                  <li><a class="dropdown-item" href="{{route('user.index')}}">('Users')</a></li>
+              </ul>
+          </li>
+          @endauth
+          <li class="nav-item">
+                  <a class="nav-link" href="{{route('login')}}">@lang('Login')</a>
+          </li>
       </ul>
+      <ul class="navbar-nav  mb-2 mb-sm-0">
+    
       <!-- <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>

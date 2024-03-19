@@ -19,7 +19,7 @@ class UserFactory extends Factory
             'email' => $this->faker->safeEmail,
             'date_de_naissance' => $this->faker->date,
             'ville_id' => $this->faker->randomElement($villeExist),
-            
+            'password' => $this->faker->password,
         ];
     }
 }
