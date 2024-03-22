@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 
 
 class UserController extends Controller
@@ -20,18 +23,11 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function register()
     {
-        return view('user.create');
+        return view('user.register');
+        
     }
-
-    public function register(Request $request)
-{
-    // Handle user registration here
-
-    // Redirect to the edit view after registration
-    return redirect()->route('user.edit', ['user' => auth()->user()]);
-}
 
     /**
      * Store a newly created resource in storage.
@@ -50,8 +46,13 @@ class UserController extends Controller
 
         $user = new User();
         
-        $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        // $user->email = $request->input('email');
+        // $user->password = $request->input('password');
+
+        $user = new User;
+        $user->fill($request->all());
+        $user->password = Hash::make($request->password);
+        $user->save();
         
 
         $user->save();

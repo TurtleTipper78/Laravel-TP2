@@ -2,7 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\VilleController;
+use App\Http\Controllers\SetLocaleController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\DocumentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,18 +25,27 @@ Route::get('/ville', [VilleController::class, 'index'])->name('ville.index');
 
 Route::get('/users', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show');
-
-
-Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
+Route::get('/user/register', [UserController::class, 'register'])->name('user.register');
 Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
-
-Route::post('/register', [UserController::class, 'register'])->name('user.register');
-
 Route::get('/user/info/{user}', [UserController::class, 'info'])->name('user.info');
 Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 Route::put('/user/update/{user}', [UserController::class, 'update'])->name('user.update');
 Route::delete('/user/delete/{user}', [UserController::class, 'destroy'])->name('user.delete');
 
+Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
+Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create');
+Route::post('/article/store', [ArticleController::class, 'store'])->name('article.store');
+Route::get('/article/{article}', [ArticleController::class, 'show'])->name('article.show');
+Route::get('/article/edit/{article}', [ArticleController::class, 'edit'])->name('article.edit');
+Route::put('/article/update/{article}', [ArticleController::class, 'update'])->name('article.update');
+Route::delete('/article/delete/{article}', [ArticleController::class, 'destroy'])->name('article.delete');
+
+Route::get('/documents', [DocumentController::class, 'index'])->name('document.index');
+Route::get('/document/create', [DocumentController::class, 'create'])->name('document.create');
+Route::post('/document', [DocumentController::class, 'store'])->name('document.store');
+Route::get('/document/{id}/edit', [DocumentController::class, 'edit'])->name('document.edit');
+Route::put('/document/{id}', [DocumentController::class, 'update'])->name('document.update');
+Route::delete('/document/{id}', [DocumentController::class, 'delete'])->name('document.delete');
 
 Route::get('/login', [AuthController::class, 'create'])->name('login');
 Route::post('/login', [AuthController::class, 'store'])->name('login.store');

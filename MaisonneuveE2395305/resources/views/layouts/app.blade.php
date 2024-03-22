@@ -35,43 +35,47 @@
 </div>
 
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="{{ route('user.index') }}">Home</a></li>
+                <li><a href="{{ route('user.register') }}">Register</a></li>
+                <li><a href="{{ route('user.index') }}">Student List</a></li>
+                <li><a href="{{ route('ville.index') }}">City's List</a></li>
+                <li><a href="{{ route('article.index') }}">Forum</a></li>
+                <li><a href="{{ route('document.index') }}">Document</a></li>
+                <li >
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @if(App::getLocale() == 'en')
+                            {{ __('English') }}
+                        @else
+                            {{ __('French') }}
+                        @endif
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @if(App::getLocale() == 'en')
+                            <a class="dropdown-item" href="{{ route('lang', 'fr') }}">{{ __('French') }}</a>
+                        @else
+                            <a class="dropdown-item" href="{{ route('lang', 'en') }}">{{ __('English') }}</a>
+                        @endif
+                    </div>
+                </li>
+                <li class="nav-item">
+                    @guest
+                        <a class="nav-link" href="{{route('login')}}">@lang('Login')</a>
+                    @else
+                        <a class="nav-link" href="{{route('logout')}}">@lang('Logout')</a>
+                    @endguest
+                </li>
+            </ul>
+            <!-- <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+            </ul> -->
+        </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="{{ route('user.index') }}">Home</a></li>
-        <li><a class="dropdown-item" href="{{ route('user.create') }}">Regsiter</a></li>
-        <li><a class="dropdown-item" href="{{ route('user.index') }}">Student List</a></li>
-        <li><a class="dropdown-item" href="{{ route('ville.index') }}">City's List</a></li>
-        @auth
-          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                  aria-expanded="false">('Users')</a>
-              <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{route('user.create')}}">('New User')</a></li>
-                  <li><a class="dropdown-item" href="{{route('user.index')}}">('Users')</a></li>
-              </ul>
-          </li>
-          @endauth
-          <li class="nav-item">
-                  <a class="nav-link" href="{{route('login')}}">@lang('Login')</a>
-          </li>
-      </ul>
-      <ul class="navbar-nav  mb-2 mb-sm-0">
-    
-      <!-- <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-      </ul> -->
-    </div>
-  </div>
 </nav>
+
 
     <div class="container d-flex align-items-center">
     @yield('content')

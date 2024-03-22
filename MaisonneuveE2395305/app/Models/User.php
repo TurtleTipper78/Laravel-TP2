@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class User extends Model implements AuthenticatableContract
 {
     use HasFactory;
+    use Authenticatable;
 
     protected $fillable = [
         'nom', 'adresse', 'telephone', 'email', 'date_de_naissance', 'ville_id', 'password'

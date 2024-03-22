@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -41,7 +43,7 @@ class AuthController extends Controller
         endif;
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
         Auth::login($user);
-        return redirect()->intended(route('task.index'))->withSuccess('Sign in');
+        return redirect()->intended(route('user.index'))->withSuccess('Sign in');
     }
 
     /**
@@ -71,7 +73,7 @@ class AuthController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy()
     {
         Session::flush();
         Auth::logout();
