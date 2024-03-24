@@ -19,7 +19,7 @@
                     <h5 class="card-title">Create your new student account</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('user.store') }}" method="POST">
+                    <form action="{{ route('users.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>

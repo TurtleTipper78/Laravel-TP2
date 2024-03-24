@@ -18,9 +18,8 @@
                     </ul>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
-                    <a href="{{ route('user.edit', $user->id)}}" class="btn btn-sm btn-outline-success">Edit</a>
-                    <!-- Form for delete action -->
-                    <form action="{{ route('user.delete', $user->id) }}" method="POST">
+                    <a href="{{ route('users.edit', $user->id)}}" class="btn btn-sm btn-outline-success">Edit</a>
+                    <form action="{{ route('users.delete', $user->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this Étudiant?')">Delete</button>

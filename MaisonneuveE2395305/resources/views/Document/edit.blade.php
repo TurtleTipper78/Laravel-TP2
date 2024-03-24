@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('title', 'Edit Document')
-
 @section('content')
 <div class="container">
     <h1>Edit Document</h1>

@@ -1,15 +1,15 @@
 @extends('layouts.app')
-@section('title', 'Info User')
+@section('title', 'Edit User')
 @section('content')
-    <h1 class="mt-5 mb-4 text-center">Please add personal information</h1>
+    <h1 class="mt-5 mb-4 text-center">Edit User</h1>
     <div class="row justify-content-center mt-5 mb-5">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header bg-light">
-                    <h5 class="card-title text-center">cassdsad</h5>
+                    <h5 class="card-title text-center">Edit User</h5>
                 </div>
                 <div class="card-body bg-light">
-                    <form action="{{ route('user.update', $user->id) }}" method="POST">
+                    <form action="{{ route('users.update', $user->id) }}" method="POST">
                         @csrf
                         @method('put')
                         <div class="mb-3">

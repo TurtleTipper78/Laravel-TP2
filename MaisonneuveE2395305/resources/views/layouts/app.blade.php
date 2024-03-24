@@ -39,8 +39,8 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ route('user.index') }}">Home</a></li>
-                <li><a href="{{ route('user.register') }}">Register</a></li>
-                <li><a href="{{ route('user.index') }}">Student List</a></li>
+                <li><a href="{{ route('users.register') }}">Register</a></li>
+                <li><a href="{{ route('users.index') }}">Student List</a></li>
                 <li><a href="{{ route('ville.index') }}">City's List</a></li>
                 <li><a href="{{ route('article.index') }}">Forum</a></li>
                 <li><a href="{{ route('document.index') }}">Document</a></li>

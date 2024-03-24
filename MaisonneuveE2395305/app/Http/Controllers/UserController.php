@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all(); 
-        return view('User.index', ['user' => $users]);
+        return view('users.index', ['user' => $users]);
     }
 
     /**
@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function register()
     {
-        return view('user.register');
+        return view('users.register');
         
     }
 
@@ -57,12 +57,12 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('user.info', $user->id)->with('success', 'User created successfully!');
+        return redirect()->route('users.info', $user->id)->with('success', 'User created successfully!');
     }
 
     public function info(User $user)
     {
-        return view ('user.info', ['user' => $user]);
+        return view ('users.info', ['user' => $user]);
     }
 
 
@@ -71,7 +71,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('user.show', ['user' => $user]);
+        return view('users.show', ['user' => $user]);
     }
 
     /**
@@ -79,7 +79,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('user.edit', ['user' => $user]);
+        return view('users.edit', ['user' => $user]);
     }
 
     /**
@@ -106,7 +106,7 @@ class UserController extends Controller
             'ville_id' => $request->ville_id
         ]);
 
-        return redirect()->route('user.show', $user->id)->with('success', 'User updated successfully!');
+        return redirect()->route('users.index', $user->id)->with('success', 'User updated successfully!');
     }
     
 
@@ -116,6 +116,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('user.index')->with('success', 'User deleted successfully!');
+        return redirect()->route('users.index')->with('success', 'User deleted successfully!');
     }
 }

@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('title', 'Document Index')
-
 @section('content')
 <div class="container">
     <div class="row">
@@ -40,11 +38,10 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this document?')">Delete</button>
                                 </form>
-                                <a href="{{ asset($documents->docu_path) }}" class="btn btn-secondary">View Document</a> <!-- Add this line -->
+                                <a href="{{ asset('storage/documents/example.pdf') }}" class="btn btn-secondary">View Document</a>
                             </td>
                         </tr>
                     @endforeach
-
                     </tbody>
                 </table>
             @endif

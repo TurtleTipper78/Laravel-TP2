@@ -23,14 +23,15 @@ use App\Http\Controllers\DocumentController;
 Route::get('/', [UserController::class, 'index'])->name('user.index');
 Route::get('/ville', [VilleController::class, 'index'])->name('ville.index');
 
-Route::get('/users', [UserController::class, 'index'])->name('user.index');
-Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show');
-Route::get('/user/register', [UserController::class, 'register'])->name('user.register');
-Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
-Route::get('/user/info/{user}', [UserController::class, 'info'])->name('user.info');
-Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
-Route::put('/user/update/{user}', [UserController::class, 'update'])->name('user.update');
-Route::delete('/user/delete/{user}', [UserController::class, 'destroy'])->name('user.delete');
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/register', [UserController::class, 'register'])->name('users.register');
+Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
+
+Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
+Route::get('/users/info/{user}', [UserController::class, 'info'])->name('users.info');
+Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
+Route::put('/users/update/{user}', [UserController::class, 'update'])->name('users.update');
+Route::delete('/users/delete/{user}', [UserController::class, 'destroy'])->name('users.delete');
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
 Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create');
