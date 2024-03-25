@@ -27,11 +27,13 @@ Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('/users/register', [UserController::class, 'register'])->name('users.register');
 Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
 
-Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
-Route::get('/users/info/{user}', [UserController::class, 'info'])->name('users.info');
-Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
-Route::put('/users/update/{user}', [UserController::class, 'update'])->name('users.update');
-Route::delete('/users/delete/{user}', [UserController::class, 'destroy'])->name('users.delete');
+Route::middleware('auth')->group(function () {
+    Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
+    Route::get('/users/info/{user}', [UserController::class, 'info'])->name('users.info');
+    Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/update/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/delete/{user}', [UserController::class, 'destroy'])->name('users.delete');
+});
 
 Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
 Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('article.show');

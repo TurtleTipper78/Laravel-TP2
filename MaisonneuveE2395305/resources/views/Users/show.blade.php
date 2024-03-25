@@ -18,12 +18,14 @@
                     </ul>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
-                    <a href="{{ route('users.edit', $user->id)}}" class="btn btn-sm btn-outline-success">{{ __('Edit') }}</a>
-                    <form action="{{ route('users.delete', $user->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this Étudiant?')">{{ __('Delete') }}</button>
-                    </form>
+                    @if(auth()->check() && $user->id === auth()->user()->id)
+                        <a href="{{ route('users.edit', $user->id)}}" class="btn btn-sm btn-outline-success">{{ __('Edit') }}</a>
+                        <form action="{{ route('users.delete', $user->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this Étudiant?')">{{ __('Delete') }}</button>
+                        </form>
+                    @endif
                 </div> 
             </div>
         </div>

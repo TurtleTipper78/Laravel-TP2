@@ -65,7 +65,7 @@
                 @guest
                     <li><a href="{{ route('login') }}">@lang('Login')</a></li>
                 @else
-                    <li><a>{{ Auth::user()->nom }}</a></li> 
+                    <li><a href="{{ route('users.show', Auth::user()->id) }}">{{ Auth::user()->nom }}</a></li>
                     <li><a href="{{ route('logout') }}">@lang('Logout')</a></li>
                 @endguest
             </ul>

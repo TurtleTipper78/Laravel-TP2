@@ -18,8 +18,7 @@
                     <div class="form-group">
                         <label for="langue">{{ __('Language') }}:</label>
                         <select class="form-control" id="langue" name="langue" required>
-                            <option value="fr">Français</option>
-                            <option value="en">English</option>
+                            <option value="{{ app()->getLocale() }}">{{ __(app()->getLocale() == 'en' ? 'English' : 'French') }}</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">{{ __('Upload') }}</button>
