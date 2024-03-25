@@ -2,12 +2,55 @@
     "Login":"Connexion",
     "Logout":"Déconnexion",
     "Users":"Utilisateurs",
-    "New User":"Nouvel utilisateur",
-    "Tasks":"Tâches",
-    "New Task":"Nouvelle tâche",
-    "Completed":"Terminé",
-    "Unfinished":"Inachevé",
+    "Registration":"Inscription",
+    "Student": "Étudiants",
+    "City":"Villes",
+    "Forum":"Forum des étudiant",
+    "Document":"Documents",
+    "Content":"Contenue",
+
+    "Title": "Titre",
+    "Password":"Mot de passe",
+    "Name": "Nom",
+    "Auteur": "Auteur",
+    "Telephone":"Téléphone",
+    "Address":"Adresse",
+    "dob": "Date de naissance",
+
+    "UpdateOn":"Mis à jour le",
+    "UploadOn":"Téléverser le",
+    "Pcreation":"Profil Crée le:",
+    "Pupdate":"Profil Mise à Jour le:",
+
+    "Show":"Afficher",
+    "Edit": "Modifier",
+    "Delete": "Supprimer",
+    "Upload": "Téléverser",
+    "Update": "Mettre à jours",
+    "Save": "Sauvegarder",
+    "Cancel":"Annuler",
+    "Back": "Retour",
+
+    "CreateUser":"Crée votre compte étudiant",
+    "EditUser": "Modification de l'Utilisateur",
+    "UserShow":"Page d'Utilisateur",
+    
+    "StudentList":"Liste des étudiants",
+    "CityList":"Liste des villes",
+    
+    "AddInfo":"SVP Rajouter vos informations",
+
+    "DocuList":"Liste des documents",
+    "CreateDocu":"Téléverser vos documents",
+    "UpdateDocu":"Mettre à jours le document",
+    "AddDocu": "Rajouter un document",
+
+    "ArticlesList":"Liste des articles",
+    "CreateArticle":"Publier un Article",
+    
     "Language":"Langue",
     "English":"Anglais",
     "French":"Français"
+
+
 }

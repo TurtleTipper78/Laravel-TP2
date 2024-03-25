@@ -1,13 +1,54 @@
 {
-    "Login":"Login",
-    "Logout":"Logout",
-    "Users":"Users",
-    "New User":"New User",
-    "Tasks":"Tasks",
-    "New Task":"New Task",
-    "Completed":"Completed",
-    "Unfinished":"Unfinished",
-    "Language":"Language",
-    "English":"English",
-    "French":"French"
+    "Login": "Login",
+    "Logout": "Logout",
+    "Users": "Users",
+    "Registration": "Registration",
+    "Student": "Students",
+    "City": "Cities",
+    "Forum": "Student Forum",
+    "Document": "Documents",
+    "Content": "Content",
+
+    "Title": "Title",
+    "Password": "Password",
+    "Name": "Name",
+    "Author": "Author",
+    "Telephone": "Telephone",
+    "Address": "Address",
+    "dob": "Date of Birth",
+
+    "UpdateOn": "Updated on",
+    "UploadOn": "Uploaded on",
+    "Pcreation": "Profile Created on:",
+    "Pupdate": "Profile Updated on:",
+
+    "Show": "Show",
+    "Edit": "Edit",
+    "Delete": "Delete",
+    "Upload": "Upload",
+    "Update": "Update",
+    "Save": "Save",
+    "Cancel": "Cancel",
+    "Back": "Back",
+
+    "CreateUser": "Create your student account",
+    "EditUser": "Edit User",
+    "UserShow": "User Page",
+
+    "StudentList": "Student List",
+    "CityList": "City List",
+
+    "AddInfo": "Please add your information",
+
+    "DocuList": "Document List",
+    "CreateDocu": "Upload your documents",
+    "UpdateDocu": "Update Document",
+    "AddDocu": "Add Document",
+
+    "ArticlesList": "Article List",
+    "CreateArticle": "Publish an Article",
+
+    "Language": "Language",
+    "English": "English",
+    "French": "French"
 }

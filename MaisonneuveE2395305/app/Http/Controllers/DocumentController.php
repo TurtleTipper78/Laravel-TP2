@@ -48,24 +48,29 @@ class DocumentController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'title' => 'required',
-            'file' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
-        ]);
+{
+    $request->validate([
+        'title' => 'required',
+        'file' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
+    ]);
 
-        $document = $request->file('file');
-        $docuName = time() . '_' . $document->getClientOriginalName();
-        $docuPath = $document->move(public_path('img'), $docuName);
+    $document = Document::findOrFail($id);
 
-        $documentModel = new Document();
-        $documentModel->title = $request->title;
-        $documentModel->docu_path = 'img/' . $docuName; 
-        $documentModel->user_id = auth()->user()->id;
-        $documentModel->save();
+    $document->title = $request->title;
 
-        return redirect()->route('document.index')->with('success', 'Document uploaded successfully.');
+    if ($request->hasFile('file')) {
+        $newDocument = $request->file('file');
+        $docuName = time() . '_' . $newDocument->getClientOriginalName();
+        $docuPath = $newDocument->move(public_path('img'), $docuName);
+        Storage::delete($document->docu_path);
+        $document->docu_path = 'img/' . $docuName;
     }
+
+    $document->save();
+
+    return redirect()->route('document.index')->with('success', 'Document updated successfully.');
+}
+
 
 
     public function delete($id)

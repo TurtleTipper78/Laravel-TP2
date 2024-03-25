@@ -7,8 +7,8 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="card-title">{{ $document->title }}</h1>
-                    <p class="card-text"><strong>Uploaded By:</strong> {{ $document->user->name }}</p>
-                    <p class="card-text"><strong>Uploaded On:</strong> {{ $document->created_at->format('M d, Y') }}</p>
+                    <p class="card-text"><strong>{{ __('UploadOn') }}:</strong> {{ $document->user->name }}</p>
+                    <p class="card-text"><strong>{{ __('UpdateOn') }}:</strong> {{ $document->created_at->format('M d, Y') }}</p>
                 </div>
             </div>
         </div>

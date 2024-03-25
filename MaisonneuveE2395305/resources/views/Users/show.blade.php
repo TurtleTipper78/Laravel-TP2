@@ -10,19 +10,19 @@
                 </div>
                 <div class="card-body bg-light">
                     <ul class="list-unstyled">
-                        <li><strong>Email:</strong> {{ $user->email}}</li>
-                        <li><strong>Telephone:</strong> {{ $user->telephone }}</li>
-                        <li><strong>Adresse:</strong> {{ $user->adresse }}</li>
-                        <li><strong>Profil Crée le:</strong> {{ $user->created_at }}</li>
-                        <li><strong>Profil Mise à Jour le:</strong> {{ $user->updated_at }}</li>
+                        <li><strong>{{ __('Email') }}:</strong> {{ $user->email }}</li>
+                        <li><strong>{{ __('Telephone') }}:</strong> {{ $user->telephone }}</li>
+                        <li><strong>{{ __('Adresse') }}:</strong> {{ $user->adresse }}</li>
+                        <li><strong>{{ __('Pcreation') }}:</strong> {{ $user->created_at }}</li>
+                        <li><strong>{{ __('Pupdate') }}:</strong> {{ $user->updated_at }}</li>
                     </ul>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
-                    <a href="{{ route('users.edit', $user->id)}}" class="btn btn-sm btn-outline-success">Edit</a>
+                    <a href="{{ route('users.edit', $user->id)}}" class="btn btn-sm btn-outline-success">{{ __('Edit') }}</a>
                     <form action="{{ route('users.delete', $user->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this Étudiant?')">Delete</button>
+                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this Étudiant?')">{{ __('Delete') }}</button>
                     </form>
                 </div> 
             </div>

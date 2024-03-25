@@ -38,12 +38,14 @@
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ route('user.index') }}">Home</a></li>
-                <li><a href="{{ route('users.register') }}">Register</a></li>
-                <li><a href="{{ route('users.index') }}">Student List</a></li>
-                <li><a href="{{ route('ville.index') }}">City's List</a></li>
-                <li><a href="{{ route('article.index') }}">Forum</a></li>
-                <li><a href="{{ route('document.index') }}">Document</a></li>
+                <li class="active"><a href="{{ route('user.index') }}">{{ __('Home') }}</a></li>
+                <li><a href="{{ route('users.register') }}">{{ __('Registration') }}</a></li>
+                <li><a href="{{ route('users.index') }}">{{ __('Student') }}</a></li>
+                <li><a href="{{ route('ville.index') }}">{{ __('City') }}</a></li>
+                <li><a href="{{ route('article.index') }}">{{ __('Forum') }}</a></li>
+                <li><a href="{{ route('document.index') }}">{{ __('Document') }}</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 <li >
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @if(App::getLocale() == 'en')
@@ -60,14 +62,14 @@
                         @endif
                     </div>
                 </li>
-                <li class="nav-item">
-                    @guest
-                        <a class="nav-link" href="{{route('login')}}">@lang('Login')</a>
-                    @else
-                        <a class="nav-link" href="{{route('logout')}}">@lang('Logout')</a>
-                    @endguest
-                </li>
+                @guest
+                    <li><a href="{{ route('login') }}">@lang('Login')</a></li>
+                @else
+                    <li><a>{{ Auth::user()->nom }}</a></li> 
+                    <li><a href="{{ route('logout') }}">@lang('Logout')</a></li>
+                @endguest
             </ul>
+
         </div>
     </div>
 </nav>
