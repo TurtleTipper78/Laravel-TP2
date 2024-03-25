@@ -62,6 +62,12 @@ class ArticleController extends Controller
     public function edit(string $id)
     {
         $article = Article::findOrFail($id);
+        
+        // Check if the authenticated user is the owner of the article
+        if ($article->user_id != Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
+        
         return view('article.edit', ['article' => $article]);
     }
 
@@ -77,6 +83,12 @@ class ArticleController extends Controller
         ]);
 
         $article = Article::findOrFail($id);
+        
+        // Check if the authenticated user is the owner of the article
+        if ($article->user_id != Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
+        
         $article->titre = $request->titre;
         $article->texte = $request->texte;
         $article->langue = $request->langue;
@@ -90,6 +102,11 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
+        // Check if the authenticated user is the owner of the article
+        if ($article->user_id != Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
+        
         $article->delete();
         return redirect()->route('article.index')->with('success', 'Article deleted successfully.');
     }

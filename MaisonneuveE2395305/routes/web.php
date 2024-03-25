@@ -34,19 +34,24 @@ Route::put('/users/update/{user}', [UserController::class, 'update'])->name('use
 Route::delete('/users/delete/{user}', [UserController::class, 'destroy'])->name('users.delete');
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
-Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create');
-Route::post('/article/store', [ArticleController::class, 'store'])->name('article.store');
 Route::get('/article/{article}', [ArticleController::class, 'show'])->name('article.show');
-Route::get('/article/edit/{article}', [ArticleController::class, 'edit'])->name('article.edit');
-Route::put('/article/update/{article}', [ArticleController::class, 'update'])->name('article.update');
-Route::delete('/article/delete/{article}', [ArticleController::class, 'destroy'])->name('article.delete');
+Route::middleware('auth')->group(function () {
+    Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create');
+    Route::post('/article/store', [ArticleController::class, 'store'])->name('article.store');
+    Route::get('/article/edit/{article}', [ArticleController::class, 'edit'])->name('article.edit');
+    Route::put('/article/update/{article}', [ArticleController::class, 'update'])->name('article.update');
+    Route::delete('/article/delete/{article}', [ArticleController::class, 'destroy'])->name('article.delete');
+});
 
-Route::get('/documents', [DocumentController::class, 'index'])->name('document.index');
-Route::get('/document/create', [DocumentController::class, 'create'])->name('document.create');
-Route::post('/document', [DocumentController::class, 'store'])->name('document.store');
-Route::get('/document/{id}/edit', [DocumentController::class, 'edit'])->name('document.edit');
-Route::put('/document/{id}', [DocumentController::class, 'update'])->name('document.update');
-Route::delete('/document/{id}', [DocumentController::class, 'delete'])->name('document.delete');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/documents', [DocumentController::class, 'index'])->name('document.index');
+    Route::get('/document/create', [DocumentController::class, 'create'])->name('document.create');
+    Route::get('/document/create', [DocumentController::class, 'create'])->name('document.create');
+    Route::post('/document', [DocumentController::class, 'store'])->name('document.store');
+    Route::get('/document/{id}/edit', [DocumentController::class, 'edit'])->name('document.edit');
+    Route::put('/document/{id}', [DocumentController::class, 'update'])->name('document.update');
+    Route::delete('/document/{id}', [DocumentController::class, 'delete'])->name('document.delete');
+});
 
 Route::get('/login', [AuthController::class, 'create'])->name('login');
 Route::post('/login', [AuthController::class, 'store'])->name('login.store');

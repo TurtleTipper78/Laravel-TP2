@@ -6,13 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Document;
 use Illuminate\Support\Facades\Storage;
 
-
 class DocumentController extends Controller
 {
     public function index()
     {
-        // $documents = Document::paginate(10); 
-        $documents = Document::all(); 
+        $documents = Document::paginate(10); 
+        // $documents = Document::all(); 
         return view('document.index', ['document' => $documents]);
     }
 
@@ -30,16 +29,17 @@ class DocumentController extends Controller
 
         $document = $request->file('file');
         $docuName = time() . '_' . $document->getClientOriginalName();
-        $docuPath = $document->storeAs('uploads', $docuName);
+        $docuPath = $document->move(public_path('img'), $docuName);
 
-        $document = new Document();
-        $document->title = $request->title;
-        $document->docu_path = $docuPath;
-        $document->user_id = auth()->user()->id;
-        $document->save();
+        $documentModel = new Document();
+        $documentModel->title = $request->title;
+        $documentModel->docu_path = 'img/' . $docuName; 
+        $documentModel->user_id = auth()->user()->id;
+        $documentModel->save();
 
         return redirect()->route('document.index')->with('success', 'Document uploaded successfully.');
     }
+
 
     public function edit($id)
     {
@@ -56,15 +56,15 @@ class DocumentController extends Controller
 
         $document = $request->file('file');
         $docuName = time() . '_' . $document->getClientOriginalName();
-        $docuPath = $document->storeAs('uploads', $docuName);
+        $docuPath = $document->move(public_path('img'), $docuName);
 
-        $document = new Document();
-        $document->title = $request->title;
-        $document->docu_path = $docuPath;
-        $document->user_id = auth()->user()->id;
-        $document->save();
+        $documentModel = new Document();
+        $documentModel->title = $request->title;
+        $documentModel->docu_path = 'img/' . $docuName; 
+        $documentModel->user_id = auth()->user()->id;
+        $documentModel->save();
 
-        return redirect()->route('document.index')->with('success', 'Document updated successfully.');
+        return redirect()->route('document.index')->with('success', 'Document uploaded successfully.');
     }
 
 

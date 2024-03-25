@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('title', 'Create Article')
-
 @section('content')
     <div class="container">
         <div class="row">
@@ -19,7 +17,10 @@
                     </div>
                     <div class="form-group">
                         <label for="langue">Language:</label>
-                        <input type="text" class="form-control" id="langue" name="langue" required>
+                        <select class="form-control" id="langue" name="langue" required>
+                            <option value="fr">Français</option>
+                            <option value="en">English</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <a href="{{ route('article.index') }}" class="btn btn-secondary">Cancel</a>
